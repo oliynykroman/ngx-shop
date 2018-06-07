@@ -2,18 +2,19 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
-import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './profile/components/login/login.component';
+import {FormsModule} from "@angular/forms";
+import {ProfileModule} from "./profile/profile.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProfileComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule,
+    FormsModule,
+    ProfileModule,
+    NgbModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

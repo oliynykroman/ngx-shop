@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'used interpolation title of the page';
-  subtitle = 'this is may subtitle';
+
 }
