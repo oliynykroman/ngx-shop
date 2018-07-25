@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "./profile/profile.module";
@@ -11,11 +10,9 @@ import {ProfileModule} from "./profile/profile.module";
   ],
   imports: [
     BrowserModule,
-    NgbModule,
     FormsModule,
     ReactiveFormsModule,
     ProfileModule,
-    NgbModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
