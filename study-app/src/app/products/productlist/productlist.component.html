@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="display-4 text-center">{{pageTitle}}</h1>
+  <div class="row justify-content-center">
+    <ul class="products-list">
+      <li type="md-local" *ngFor="let ProductList of allproducts" (click)="selectedItem(ProductList)" class="products-item">
+        <h4 class="prod-title">{{ProductList.productTitle}}</h4>
+        <div class="prod-descr">{{ProductList.productDescr}}</div>
+        <div class="prod-count">{{ProductList.productCount}}</div>
+      </li>
+    </ul>
+  </div>
+  <div><span>id: </span>{{eventHero.productTitle}}</div>
+  <div>
+  </div>
+</div>
