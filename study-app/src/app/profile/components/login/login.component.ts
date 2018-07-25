@@ -10,12 +10,12 @@ import {LoginToken} from "../../../classes/profile";
 
 export class LoginComponent implements OnInit {
 
-  public pageTitle = 'Login'
+  public pageTitle = 'Login';
 
   // login information
   login: LoginToken = {
     username: 'romano',
-    pass: 'romano'
+    pass: 'romano',
   }
 
   constructor() {
