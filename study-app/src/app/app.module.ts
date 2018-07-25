@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "./profile/profile.module";
+import {ProductsModule} from "./products/products.module";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {ProfileModule} from "./profile/profile.module";
     FormsModule,
     ReactiveFormsModule,
     ProfileModule,
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
