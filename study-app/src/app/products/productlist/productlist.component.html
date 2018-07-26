@@ -2,14 +2,10 @@
   <h1 class="display-4 text-center">{{pageTitle}}</h1>
   <div class="row justify-content-center">
     <ul class="products-list">
-      <li type="md-local" *ngFor="let ProductList of allproducts" (click)="selectedItem(ProductList)" class="products-item">
-        <h4 class="prod-title">{{ProductList.productTitle}}</h4>
-        <div class="prod-descr">{{ProductList.productDescr}}</div>
-        <div class="prod-count">{{ProductList.productCount}}</div>
+      <li class="products-item" [class.selected]="product === selectedProduct" *ngFor="let product of allProducts" (click)="onProductSelect(product)">
+        <h4 class="prod-title">{{product.productTitle}}</h4>
       </li>
     </ul>
   </div>
-  <div><span>id: </span>{{eventHero.productTitle}}</div>
-  <div>
+  <app-productdetails [productDet]="selectedProduct" (closeDetails)="selectedProduct = null;"></app-productdetails>
   </div>
-</div>

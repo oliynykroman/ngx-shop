@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Product} from "../../classes/products";
 import {PRODLIST} from "../../classes/productlist";
-import {ProductList} from "../../classes/products";
 
 
 @Component({
@@ -9,16 +9,17 @@ import {ProductList} from "../../classes/products";
   styleUrls: ['./productlist.component.css']
 })
 export class ProductlistComponent implements OnInit {
-  pageTitle = 'List of products';
+  selectItem: string = '';
+  pageTitle: string = 'List of products';
 
-  allproducts = PRODLIST;
+  selectedProduct: Product;
+  allProducts = PRODLIST;
 
-  eventHero:ProductList;
-
-
-  selectedItem(ProductList):void{
-    this.eventHero = ProductList;
+  onProductSelect(isSelected: Product): void {
+    this.selectedProduct = isSelected;
   }
+
+
   constructor() {
   }
 

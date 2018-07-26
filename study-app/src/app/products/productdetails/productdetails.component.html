@@ -1,3 +1,4 @@
-<p>
-  productdetails works!
-</p>
+<div class="product-details" *ngIf="productDet" (click)="removeSelected()">
+  <div class="prod-title"><span>Count: </span>{{productDet.productCount}}</div>
+  <div class="prod-title"><span>Description: </span>{{productDet.productDescr}}</div>
+</div>

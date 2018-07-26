@@ -1,4 +1,4 @@
-export class ProductList {
+export class Product {
   productTitle: string;
   productCount: number;
   productDescr: string;
@@ -7,6 +7,5 @@ export class ProductList {
     this.productTitle = productTitle;
     this.productCount = productCount;
     this.productDescr = productDescr;
-
   }
 }
