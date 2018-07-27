@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "../../classes/products";
-import {PRODLIST} from "../../classes/productlist";
+import {ProductService} from "../../services/buy-product.service";
 
 
 @Component({
@@ -11,20 +11,28 @@ import {PRODLIST} from "../../classes/productlist";
 export class ProductlistComponent implements OnInit {
   selectItem: string = '';
   pageTitle: string = 'List of products';
-
   selectedProduct: Product;
-  allProducts = PRODLIST;
+  productToBucket: Product;
+  allproducts: Product[];
+
 
   onProductSelect(isSelected: Product): void {
     this.selectedProduct = isSelected;
   }
 
+  inBucket(productTo): any {
+    this.productToBucket = productTo;
+  }
 
-  constructor() {
+  constructor(private productService: ProductService) {
+  }
+
+  getProducts(): void {
+    this.productService.getProducts().subscribe(products=>this.allproducts = products);
   }
 
   ngOnInit() {
-
+    this.getProducts();
   }
 
 }

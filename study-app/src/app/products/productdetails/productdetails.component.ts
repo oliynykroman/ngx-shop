@@ -10,12 +10,17 @@ import {Product} from "../../classes/products";
 export class ProductdetailsComponent implements OnInit {
   @Input() productDet: Product;
   @Output() closeDetails = new EventEmitter();
+
   constructor() {
   }
 
   removeSelected(): void {
     this.productDet = null;
     this.closeDetails.emit();
+  }
+
+  addToButton(product): void {
+    this.productDet = product;
   }
 
   ngOnInit() {

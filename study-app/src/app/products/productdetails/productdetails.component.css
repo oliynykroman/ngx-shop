@@ -6,3 +6,10 @@
   padding: .5em 1em;
   margin: 1em;
 }
+.add-to-button{
+  border:1px solid green;
+  margin: 1em;
+  cursor: pointer;
+  display: inline-block;
+  padding: .5em;
+}
