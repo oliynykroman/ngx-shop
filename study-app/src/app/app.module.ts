@@ -3,16 +3,20 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileModule} from "./profile/profile.module";
+import {ProductsModule} from "./products/products.module";
+import {BucketModule} from "./bucket/bucket.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     ProfileModule,
+    ProductsModule,
+    BucketModule
   ],
   providers: [],
   bootstrap: [AppComponent]

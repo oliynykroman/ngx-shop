@@ -1,0 +1,7 @@
+<div class="product-details" *ngIf="productDet">
+  <div class="close"  (click)="removeSelected()">X</div>
+  <div class="prod-title"><span>Count: </span>{{productDet.productCount}}</div>
+  <div class="prod-descr"><span>Description: </span>{{productDet.productDescr}}</div>
+  <div class="prod-price"><span>Price for one: </span>{{productDet.productPrice}}</div>
+  <div class="add-to-button" (click)="addToButton(productDet)">Add this product to button</div>
+</div>
