@@ -20,8 +20,9 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   addToButton(product): void {
-    this.productDet = product;
+
   }
+
 
   ngOnInit() {
   }
