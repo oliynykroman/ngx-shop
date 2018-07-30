@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Product} from "../../classes/products";
+import {BucketService} from "../../services/bucket.service";
 
 @Component({
   selector: 'app-productdetails',
@@ -11,7 +12,7 @@ export class ProductdetailsComponent implements OnInit {
   @Input() productDet: Product;
   @Output() closeDetails = new EventEmitter();
 
-  constructor() {
+  constructor(private bucketService: BucketService) {
   }
 
   removeSelected(): void {
@@ -19,8 +20,8 @@ export class ProductdetailsComponent implements OnInit {
     this.closeDetails.emit();
   }
 
-  addToButton(product): void {
-
+  addToBucket(productTitle: string, productCount: number, ProductPrice: number){
+    this.bucketService.addProduct(productTitle, ProductPrice, productCount);
   }
 
 

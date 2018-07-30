@@ -1,22 +1,39 @@
-import { Injectable } from '@angular/core';
-import {Product} from "../classes/products";
+import {Injectable} from '@angular/core';
+import {bucket} from "../classes/bucket";
+import {Observable, of} from "rxjs/index";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BucketService {
-  buyproducts:Product[] = [];
+  private bucketData: bucket[] = [];
 
-  addProduct(buyedproduct: Product){
-    this.buyproducts.push(buyedproduct);
-  }
-  removeAllProducts(){
-    this.buyproducts = [];
+
+  addProduct(productTitle: string, ProductPrice: number, ProductCount: number) {
+    this.bucketData.push(new bucket(productTitle, ProductPrice, ProductCount));
   }
 
-  constructor() { }
+  // getProduct(): bucket[] {
+  //   return this.bucketData;
+  // }
 
+  getProduct(): Observable<bucket[]> {
+    return of(this.bucketData);
+  }
 
+  // getProductSummTotal() {
+  //   let productSumm: number = 0;
+  //   for (let i = 0; this.bucketData.length; i++) {
+  //     return productSumm += this.bucketData[i].productPrice;
+  //   }
+  // }
+
+  // removeAllProducts() {
+  //   this.buyproducts = [];
+  // }
+
+  constructor() {
+  }
 
 
 }

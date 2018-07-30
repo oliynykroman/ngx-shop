@@ -12,16 +12,11 @@ export class ProductlistComponent implements OnInit {
   selectItem: string = '';
   pageTitle: string = 'List of products';
   selectedProduct: Product;
-  productToBucket: Product;
   allproducts: Product[];
 
 
   onProductSelect(isSelected: Product): void {
     this.selectedProduct = isSelected;
-  }
-
-  inBucket(productTo): any {
-    this.productToBucket = productTo;
   }
 
   constructor(private productService: ProductService) {
