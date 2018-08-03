@@ -9,7 +9,7 @@
       </li>
     </ul>
   </div>
-  <app-productdetails [productDet]="selectedProduct" (closeDetails)="selectedProduct = null;" (ProductToBucket)="inBucket($event)"></app-productdetails>
+  <app-productdetails [productDet]="selectedProduct" (closeDetails)="selectedProduct = null;"></app-productdetails>
 </div>
 <div class="short-bucket">
   <app-bucket-mini></app-bucket-mini>
