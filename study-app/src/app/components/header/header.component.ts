@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   getTotalProducts(): void {
     this.BuyBehaviorSubject = this.productService.BuyBehaviorSubject.subscribe((data) => {
       this.totalProducts = data;
+      console.log(data);
     });
   }
 

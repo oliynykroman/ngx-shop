@@ -16,7 +16,7 @@ export class ProductService {
     return of(PRODUCTS);
   }
 
-  public  BuyBehaviorSubject = new BehaviorSubject(BUYPRODUCTS);
+  public BuyBehaviorSubject = new BehaviorSubject(BUYPRODUCTS);
 
   getProductById(id: number): Observable<Product> {
     let product: any = PRODUCTS.find(prod => prod.id === id);
@@ -30,8 +30,22 @@ export class ProductService {
 
 
   setBuyProduct(id: number, count: number) {
-    BUYPRODUCTS.push(new Bucket(id, count));
-    this.BuyBehaviorSubject.next(BUYPRODUCTS);
+    if (BUYPRODUCTS.length === 0) {
+      BUYPRODUCTS.push(new Bucket(id, count));
+    } else {
+      let i = 0;
+      while (i < BUYPRODUCTS.length) {
+        console.log(BUYPRODUCTS[i].id);
+        console.log(id);
+        if (BUYPRODUCTS[i].id === id) {
+          BUYPRODUCTS[i].count += count;
+        } else {
+          BUYPRODUCTS.push(new Bucket(id, count));
+        }
+        i++;
+      }
+    }
+    console.log(BUYPRODUCTS);
   }
 
   getBuyProduct() {
