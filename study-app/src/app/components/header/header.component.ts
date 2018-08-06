@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {ProductService} from "../../service/product.service";
+import {Bucket} from "../../classes/Bucket";
+import {Subscription} from "rxjs/index";
 
 @Component({
   selector: 'app-header',
@@ -6,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  totalProducts: Bucket[];
+  BuyBehaviorSubject: Subscription = null;
 
-  constructor() { }
+  constructor(private router: Router, private productService: ProductService) {
+  }
+
+  getTotalProducts(): void {
+    this.BuyBehaviorSubject = this.productService.BuyBehaviorSubject.subscribe((data) => {
+      this.totalProducts = data;
+    });
+  }
 
   ngOnInit() {
+    this.getTotalProducts();
   }
 
 }

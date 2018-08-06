@@ -2,9 +2,19 @@
   <div class="wrap">
     <h3>{{productDet.title}}</h3>
     <pre><strong>ID: </strong>{{productDet.id}}</pre>
-    <div class="price"><strong>Price: </strong>{{productDet.price}}</div>
+    <div class="price"><strong>Price: </strong>{{productDet.price}} <strong>UAH</strong></div>
     <p><strong>Description: </strong> {{productDet.descr}}</p>
+    <hr>
+    <div class="set-total" *ngIf="productDet.count > 1">
+      <label>Count:
+        <input type="number" min="1" max="{{productDet.count}}" placeholder="max:{{productDet.count}}"
+               [(ngModel)]="count">
+      </label>
+      <span class="totalPrice"><strong>Total price: </strong>{{productDet.price * count}}</span>
+      <hr>
+    </div>
+
     <button class="buy-product" (click)="buyProduct()">Buy this product</button>
-    <button class="go-to-list">Back to shop</button>
+    <button class="go-to-list" routerLink="">Back to shop</button>
   </div>
 </div>

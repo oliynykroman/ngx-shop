@@ -1,7 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Product} from "../classes/Product";
+import {Bucket} from "../classes/Bucket";
 import {PRODUCTS} from "../classes/productList";
-import {Observable, of} from "rxjs/index";
+import {BehaviorSubject, Observable, of} from "rxjs/index";
+import {Router} from "@angular/router";
+
+const BUYPRODUCTS: Bucket[] = [];
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +16,29 @@ export class ProductService {
     return of(PRODUCTS);
   }
 
+  public  BuyBehaviorSubject = new BehaviorSubject(BUYPRODUCTS);
+
   getProductById(id: number): Observable<Product> {
-    return of(PRODUCTS.find(prod=>prod.id === id));
+    let product: any = PRODUCTS.find(prod => prod.id === id);
+    if (product !== undefined) {
+      return of(product);
+    } else {
+      this.router.navigate(['/']); //router
+      return null;
+    }
   }
 
-  constructor() {
+
+  setBuyProduct(id: number, count: number) {
+    BUYPRODUCTS.push(new Bucket(id, count));
+    this.BuyBehaviorSubject.next(BUYPRODUCTS);
+  }
+
+  getBuyProduct() {
+
+  }
+
+  constructor(private router: Router) {
 
   }
 

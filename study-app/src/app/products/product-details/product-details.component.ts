@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../service/product.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {Product} from "../../classes/Product";
 
@@ -11,14 +11,24 @@ import {Product} from "../../classes/Product";
 })
 export class ProductDetailsComponent implements OnInit {
   productDet: Product;
+  count: number = 1;
 
-  constructor(private setDetail: ProductService, private route: ActivatedRoute, private location: Location) {
+  constructor(private setDetail: ProductService, private route: ActivatedRoute, private location: Location,
+              private router: Router) {
   }
 
   getDetail(): void {
     const id: number = +this.route.snapshot.paramMap.get('id');
-    this.setDetail.getProductById(id).subscribe(productDet => this.productDet = productDet);
-    console.log(this.productDet);
+    this.setDetail.getProductById(id)
+      .subscribe({
+        next: productDet => this.productDet = productDet,
+        error: err => {this.router.navigate(['/']); console.log(err)}
+      })
+    ;
+  }
+
+  buyProduct() {
+    this.setDetail.setBuyProduct(this.productDet.id, this.count);
   }
 
   ngOnInit() {
