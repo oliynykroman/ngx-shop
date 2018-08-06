@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BucketMiniComponent } from './bucket-mini.component';
+import { ProductDetailsComponent } from './product-details.component';
 
-describe('BucketMiniComponent', () => {
-  let component: BucketMiniComponent;
-  let fixture: ComponentFixture<BucketMiniComponent>;
+describe('ProductDetailsComponent', () => {
+  let component: ProductDetailsComponent;
+  let fixture: ComponentFixture<ProductDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BucketMiniComponent ]
+      declarations: [ ProductDetailsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BucketMiniComponent);
+    fixture = TestBed.createComponent(ProductDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
