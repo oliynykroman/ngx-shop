@@ -1,11 +1,8 @@
-import {Product} from "./products";
+import {Product} from "./Product";
 
-export const PRODLIST: Product[] = [
-  new Product('one title', 2, 'one descr', 100),
-  new Product('two title', 2, 'two descr', 230),
-  new Product('tree title', 2, 'tree descr', 310),
-  new Product('four title', 2, 'four descr', 50),
-  new Product('five title', 2, 'five descr', 70),
-  new Product('six title', 2, 'siz descr', 110),
-  new Product('seven title', 2, 'seven descr', 120),
-]
+export const PRODUCTS: Product[] =[
+  new Product(1, 'product1', 'description 1', 100),
+  new Product(2, 'product2', 'description 2', 200),
+  new Product(3, 'product3', 'description 3', 300),
+  new Product(4, 'product4', 'description 4', 400),
+];
