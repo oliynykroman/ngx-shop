@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Product} from "../classes/Product";
 import {Bucket} from "../classes/Bucket";
-import {PRODUCTS} from "../classes/productList";
+import {PRODUCTS} from "../classes/productlist.model";
 import {BehaviorSubject, Observable, of} from "rxjs/index";
 import {Router} from "@angular/router";
 

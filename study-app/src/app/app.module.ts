@@ -7,13 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import {FormsModule} from "@angular/forms";
+import { BucketComponent } from './bucket/bucket.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     HeaderComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BucketComponent
 
   ],
   imports: [

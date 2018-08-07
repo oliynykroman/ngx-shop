@@ -23,7 +23,6 @@ export class ProductListComponent implements OnInit {
 
   OnSelect(productId: number) {
     this.router.navigate(['/product-details', productId]); //router
-    
   }
 
   ngOnInit() {
