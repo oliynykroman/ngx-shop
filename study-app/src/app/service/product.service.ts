@@ -28,32 +28,26 @@ export class ProductService {
     }
   }
 
-
   setBuyProduct(id: number, count: number) {
     if (BUYPRODUCTS.length === 0) {
       BUYPRODUCTS.push(new Bucket(id, count));
     } else {
-      let i = 0;
-      while (i < BUYPRODUCTS.length) {
-        console.log(BUYPRODUCTS[i].id);
-        console.log(id);
-        if (BUYPRODUCTS[i].id === id) {
-          BUYPRODUCTS[i].count += count;
-        } else {
-          BUYPRODUCTS.push(new Bucket(id, count));
-        }
-        i++;
+      let item = BUYPRODUCTS.find(item => item.id === id);
+      if (!item) {
+        BUYPRODUCTS.push(new Bucket(id, count));
+      }
+      else {
+        item.count += count;
       }
     }
     console.log(BUYPRODUCTS);
   }
 
+
   getBuyProduct() {
 
   }
 
-  constructor(private router: Router) {
-
-  }
+  constructor(private router: Router) {}
 
 }
