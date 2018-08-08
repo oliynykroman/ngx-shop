@@ -1,12 +1,10 @@
-export class bucket {
-  productTitle: string;
-  productCount: number;
-  productPrice: number;
+export class Bucket {
+  id: number;
+  count: number;
 
-  constructor(productTitle: string, productCount: number, productPrice: number) {
-    this.productTitle = productTitle;
-    this.productCount = productCount;
-    this.productPrice = productPrice;
+  constructor(id: number, count: number) {
+    this.id = id;
+    this.count = count;
   }
 }
 

@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="display-4 text-center">{{pageTitle}}</h1>
+  <div class="row justify-content-center">
+    <ul class="products-list">
+      <li type="md-local" *ngFor="let product of Products" (click)="OnSelect(product.id)" class="products-item">
+        <h4 class="prod-title">{{product.title}}</h4>
+        <div class="prod-descr">{{product.descr}}</div>
+        <div class="prod-count">{{product.id}}</div>
+      </li>
+    </ul>
+  </div>
+</div>
