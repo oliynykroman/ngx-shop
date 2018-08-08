@@ -19,14 +19,17 @@ export class HeaderComponent implements OnInit {
   getTotalProducts(): void {
     this.BuyBehaviorSubject = this.productService.BuyBehaviorSubject.subscribe((data) => {
       this.totalProducts = data;
+
     });
   }
 
-  selectFullBucket():void{
-    this.router.navigate(['/fullbucket']); //router
+
+  selectFullBucket(): void {
+    this.productService.getBucketProduct();
   }
 
   ngOnInit() {
+
     this.getTotalProducts();
   }
 

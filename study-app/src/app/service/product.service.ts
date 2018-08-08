@@ -5,8 +5,19 @@ import {PRODUCTS} from "../classes/productlist.model";
 import {BehaviorSubject, Observable, of} from "rxjs/index";
 import {Router} from "@angular/router";
 
-const BUYPRODUCTS: Bucket[] = [];
+// extend Product class with new property
+export class BucketProducts extends Product {
+  totalCount: number;
 
+  constructor(id: number, title: string, descr: string, price: number, count: number, totalCount: number) {
+    super(id, title, descr, price, count);
+    this.totalCount = totalCount;
+  }
+};
+
+const BUCKETPRODUCTS: BucketProducts[] = [];
+
+const BUYPRODUCTS: Bucket[] = [];
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +28,7 @@ export class ProductService {
   }
 
   public BuyBehaviorSubject = new BehaviorSubject(BUYPRODUCTS);
+  public BucketBehaviorSubject = new BehaviorSubject(BUCKETPRODUCTS);
 
   getProductById(id: number): Observable<Product> {
     let product: any = PRODUCTS.find(prod => prod.id === id);
@@ -40,14 +52,18 @@ export class ProductService {
         item.count += count;
       }
     }
-    console.log(BUYPRODUCTS);
   }
 
-
-  getBuyProduct() {
-
+  getBucketProduct(){
+    for (let i = 0; i < BUYPRODUCTS.length; i++) {
+      let item = PRODUCTS.find(item => item.id === BUYPRODUCTS[i].id);
+      if (item) {
+        BUCKETPRODUCTS.push(new BucketProducts(item.id, item.title, item.descr, item.price, item.count, BUYPRODUCTS[i].count));
+      }
+    }
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
 }

@@ -1,0 +1,42 @@
+<h3>Full bucket view</h3>
+<div *ngIf="totalProducts.length; else emptyBucket">
+<table class="bucket" border="1">
+  <thead>
+  <tr>
+    <th class="items" width="50">№</th>
+    <th class="title" width="330">Title</th>
+    <th class="id" width="50">ID</th>
+    <th class="count" width="50">Items count</th>
+    <th class="price" width="150">Price</th>
+    <th class="total-price" width="150">Total price</th>
+    <th class="remove">remove</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let bucket of totalProducts">
+    <td class="items-td">{{bucket.id}}</td>
+    <td class="title-td">{{bucket.title}}</td>
+    <td class="id-td">{{bucket.id}}</td>
+    <td class="count-td">{{bucket.count}}</td>
+    <td class="price-td">{{bucket.price}}</td>
+    <td class="total-price-td">{{bucket.count * bucket.price}}</td>
+    <td class="remove-td">
+      <button class="remove" (click)="removeItem(bucket)">X</button>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="5" align="right">Total price</td>
+    <td colspan="2"></td>
+  </tr>
+  </tfoot>
+</table>
+<button class="go-to-list" routerLink="">Back to shop</button>
+<button>buy all</button>
+</div>
+<ng-template class="empty-bucket" #emptyBucket>
+  <h2>Your Bucket is empty ((</h2>
+  <button class="go-to-list" routerLink="/products">Back to shop</button>
+</ng-template>
+
