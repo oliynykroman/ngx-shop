@@ -15,9 +15,9 @@ export class BucketProducts extends Product {
   }
 };
 
-const BUCKETPRODUCTS: BucketProducts[] = [];
-
+let BUCKETPRODUCTS: BucketProducts[] = [];
 const BUYPRODUCTS: Bucket[] = [];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -54,7 +54,7 @@ export class ProductService {
     }
   }
 
-  getBucketProduct(){
+  getBucketProduct() {
     for (let i = 0; i < BUYPRODUCTS.length; i++) {
       let item = PRODUCTS.find(item => item.id === BUYPRODUCTS[i].id);
       if (item) {
@@ -62,6 +62,16 @@ export class ProductService {
       }
     }
   }
+
+  removeBucketProduct(bucket: BucketProducts) {
+    for (let i = 0; i < BUYPRODUCTS.length; i++) {
+      if (BUYPRODUCTS[i].id === bucket.id) {
+        BUYPRODUCTS.splice(i, 1);
+        BUCKETPRODUCTS.splice(i, 1);
+      }
+    }
+  }
+
 
   constructor(private router: Router) {
   }
