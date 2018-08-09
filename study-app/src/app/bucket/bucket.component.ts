@@ -20,16 +20,6 @@ export class BucketComponent implements OnInit {
     })
   }
 
-  removeItem(bucket: BucketProducts): void {
-    console.log(bucket);
-    for (let i = 0; i < this.totalProducts.length; i++){
-      if (this.totalProducts[i].id === bucket.id){
-        console.log(i);
-        this.totalProducts.splice(i,1);
-      }
-    }
-  }
-
   ngOnInit() {
     this.getAllBucketProducts();
   }
