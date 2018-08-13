@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BucketProducts, ProductService} from "../service/product.service";
 import {Subscription} from "rxjs/index";
+import {HeaderService} from "../service/header.service";
 
 @Component({
   selector: 'app-bucket',
@@ -19,6 +20,12 @@ export class BucketComponent implements OnInit {
       this.totalProducts = data;
     })
   }
+
+  removeBucketItem(item: BucketProducts): void {
+    this.productService.removeBucketProduct(item);
+  }
+
+
 
   ngOnInit() {
     this.getAllBucketProducts();

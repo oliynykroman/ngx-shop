@@ -17,9 +17,9 @@
       <td class="items-td">{{bucket.id}}</td>
       <td class="title-td">{{bucket.title}}</td>
       <td class="id-td">{{bucket.id}}</td>
-      <td class="count-td"><input type="number" value="{{bucket.count}}" [(ngModel)]="bucket.count"></td>
+      <td class="count-td"><input type="number" value="{{bucket.totalCount}}" [min]="1" [max]="bucket.count" [(ngModel)]="bucket.totalCount"></td>
       <td class="price-td">{{bucket.price}}</td>
-      <td class="total-price-td">{{bucket.count * bucket.price}}</td>
+      <td class="total-price-td">{{bucket.totalCount * bucket.price}}</td>
       <td class="remove-td">
         <button class="remove" (click)="removeBucketItem(bucket)">X</button>
       </td>

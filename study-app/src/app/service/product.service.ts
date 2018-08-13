@@ -43,6 +43,7 @@ export class ProductService {
   setBuyProduct(id: number, count: number) {
     if (BUYPRODUCTS.length === 0) {
       BUYPRODUCTS.push(new Bucket(id, count));
+      this.setBucketProduct();
     } else {
       let item = BUYPRODUCTS.find(item => item.id === id);
       if (!item) {
@@ -52,9 +53,10 @@ export class ProductService {
         item.count += count;
       }
     }
+
   }
 
-  getBucketProduct() {
+  setBucketProduct(){
     for (let i = 0; i < BUYPRODUCTS.length; i++) {
       let item = PRODUCTS.find(item => item.id === BUYPRODUCTS[i].id);
       if (item) {

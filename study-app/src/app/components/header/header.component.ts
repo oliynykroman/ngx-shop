@@ -10,7 +10,6 @@ import {Subscription} from "rxjs/index";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  showHide:boolean = false;
   totalProducts: Bucket[];
   BuyBehaviorSubject: Subscription = null;
 
@@ -21,12 +20,6 @@ export class HeaderComponent implements OnInit {
     this.BuyBehaviorSubject = this.productService.BuyBehaviorSubject.subscribe((data) => {
       this.totalProducts = data;
     });
-  }
-
-
-  selectFullBucket(): void {
-    this.productService.getBucketProduct();
-    this.productService.showHideBucketButton(this.showHide);
   }
 
   ngOnInit() {
