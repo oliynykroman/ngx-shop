@@ -11,20 +11,29 @@ import {HeaderService} from "../service/header.service";
 export class BucketComponent implements OnInit {
   totalProducts: BucketProducts[];
   BucketBehaviorSubject: Subscription = null;
+  totalPrice: number = 0;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private headerService: HeaderService) {
   }
 
   getAllBucketProducts(): void {
     this.BucketBehaviorSubject = this.productService.BucketBehaviorSubject.subscribe((data) => {
       this.totalProducts = data;
-    })
+      console.log(this.totalProducts);
+
+    });
   }
+
+
+
 
   removeBucketItem(item: BucketProducts): void {
     this.productService.removeBucketProduct(item);
   }
 
+  goShopButton(): void {
+    this.headerService.setBucketState(true);
+  }
 
 
   ngOnInit() {

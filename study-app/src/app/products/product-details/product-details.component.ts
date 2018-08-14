@@ -29,6 +29,7 @@ export class ProductDetailsComponent implements OnInit {
 
   buyProduct() {
     this.setDetail.setBuyProduct(this.productDet.id, this.count);
+    this.setDetail.setBucketProduct();
   }
 
   ngOnInit() {

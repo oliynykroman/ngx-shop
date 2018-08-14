@@ -32,11 +32,11 @@
     </tr>
     </tfoot>
   </table>
-  <button class="go-to-list" routerLink="">Back to shop</button>
+  <button class="go-to-list" routerLink="" (click)="goShopButton()">Back to shop</button>
   <button>buy all</button>
 </div>
 <ng-template class="empty-bucket" #emptyBucket>
   <h2>Your Bucket is empty ((</h2>
-  <button class="go-to-list" routerLink="/products">Back to shop</button>
+  <button class="go-to-list" routerLink="/products" (click)="goShopButton()">Back to shop</button>
 </ng-template>
 
