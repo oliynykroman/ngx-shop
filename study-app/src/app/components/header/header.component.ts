@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {ProductService} from "../../service/product.service";
 import {Bucket} from "../../classes/Bucket";
 import {Subscription} from "rxjs/index";
+import {HeaderService} from "../../service/header.service";
 
 @Component({
   selector: 'app-header',
@@ -10,23 +11,25 @@ import {Subscription} from "rxjs/index";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  showHide:boolean = false;
   totalProducts: Bucket[];
   BuyBehaviorSubject: Subscription = null;
+  BucketButtonState: Subscription = null;
+  getBucketButtonState: boolean = true;
 
-  constructor(private router: Router, private productService: ProductService) {
+  constructor(private router: Router, private productService: ProductService, private headerService: HeaderService) {
   }
 
   getTotalProducts(): void {
     this.BuyBehaviorSubject = this.productService.BuyBehaviorSubject.subscribe((data) => {
       this.totalProducts = data;
     });
+    this.BucketButtonState = this.headerService.BucketButtonState.subscribe((status) => {
+      this.getBucketButtonState = status;
+    });
   }
 
-
-  selectFullBucket(): void {
-    this.productService.getBucketProduct();
-    this.productService.showHideBucketButton(this.showHide);
+  goBucketButton(): void {
+    this.headerService.setBucketState(false);
   }
 
   ngOnInit() {

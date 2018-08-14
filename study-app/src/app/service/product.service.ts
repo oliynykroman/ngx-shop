@@ -52,16 +52,26 @@ export class ProductService {
         item.count += count;
       }
     }
+
   }
 
-  getBucketProduct() {
+  setBucketProduct() {
     for (let i = 0; i < BUYPRODUCTS.length; i++) {
       let item = PRODUCTS.find(item => item.id === BUYPRODUCTS[i].id);
+      console.log(item);
       if (item) {
-        BUCKETPRODUCTS.push(new BucketProducts(item.id, item.title, item.descr, item.price, item.count, BUYPRODUCTS[i].count));
+        for (let k = 0; k <= BUCKETPRODUCTS.length; k++) {
+          console.log(BUCKETPRODUCTS.length);
+          let itemIn = BUCKETPRODUCTS.find(itemIn => itemIn.id === item.id);
+          if (itemIn === undefined) {
+            BUCKETPRODUCTS.push(new BucketProducts(item.id, item.title, item.descr, item.price, item.count, BUYPRODUCTS[i].count));
+          }
+        }
       }
     }
   }
+
+
 
   removeBucketProduct(bucket: BucketProducts) {
     for (let i = 0; i < BUYPRODUCTS.length; i++) {

@@ -17,9 +17,9 @@
       <td class="items-td">{{bucket.id}}</td>
       <td class="title-td">{{bucket.title}}</td>
       <td class="id-td">{{bucket.id}}</td>
-      <td class="count-td"><input type="number" value="{{bucket.count}}" [(ngModel)]="bucket.count"></td>
+      <td class="count-td"><input type="number" value="{{bucket.totalCount}}" [min]="1" [max]="bucket.count" [(ngModel)]="bucket.totalCount"></td>
       <td class="price-td">{{bucket.price}}</td>
-      <td class="total-price-td">{{bucket.count * bucket.price}}</td>
+      <td class="total-price-td">{{bucket.totalCount * bucket.price}}</td>
       <td class="remove-td">
         <button class="remove" (click)="removeBucketItem(bucket)">X</button>
       </td>
@@ -32,11 +32,11 @@
     </tr>
     </tfoot>
   </table>
-  <button class="go-to-list" routerLink="">Back to shop</button>
+  <button class="go-to-list" routerLink="" (click)="goShopButton()">Back to shop</button>
   <button>buy all</button>
 </div>
 <ng-template class="empty-bucket" #emptyBucket>
   <h2>Your Bucket is empty ((</h2>
-  <button class="go-to-list" routerLink="/products">Back to shop</button>
+  <button class="go-to-list" routerLink="/products" (click)="goShopButton()">Back to shop</button>
 </ng-template>
 
