@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 
 import {ProductService} from "../../service/product.service";
@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService) {
 
   }
+
 
   getProducts(): void {
   this.productService.getProducts().subscribe(products=>this.Products = products);

@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {ProductService} from "../../service/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {Product} from "../../classes/Product";
+import {Input} from "@angular/compiler/src/core";
 
 @Component({
   selector: 'app-product-details',
@@ -12,6 +13,7 @@ import {Product} from "../../classes/Product";
 export class ProductDetailsComponent implements OnInit {
   productDet: Product;
   count: number = 1;
+  err: boolean = false;
 
   constructor(private setDetail: ProductService, private route: ActivatedRoute, private location: Location,
               private router: Router) {
@@ -22,14 +24,21 @@ export class ProductDetailsComponent implements OnInit {
     this.setDetail.getProductById(id)
       .subscribe({
         next: productDet => this.productDet = productDet,
-        error: err => {this.router.navigate(['/']); console.log(err)}
+        error: err => {
+          this.router.navigate(['/']);
+        }
       })
     ;
   }
 
-  buyProduct() {
-    this.setDetail.setBuyProduct(this.productDet.id, this.count);
-    this.setDetail.setBucketProduct();
+  buyProduct(): void {
+    if (this.count > 0) {
+      this.setDetail.setBuyProduct(this.productDet.id, this.count);
+      this.setDetail.setBucketProduct();
+    } else {
+      this.err = true;
+      console.log('dsadas');
+    }
   }
 
   ngOnInit() {

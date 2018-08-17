@@ -49,19 +49,16 @@ export class ProductService {
         BUYPRODUCTS.push(new Bucket(id, count));
       }
       else {
-        item.count += count;
+        item.count = count;
       }
     }
-
   }
 
   setBucketProduct() {
     for (let i = 0; i < BUYPRODUCTS.length; i++) {
       let item = PRODUCTS.find(item => item.id === BUYPRODUCTS[i].id);
-      console.log(item);
       if (item) {
         for (let k = 0; k <= BUCKETPRODUCTS.length; k++) {
-          console.log(BUCKETPRODUCTS.length);
           let itemIn = BUCKETPRODUCTS.find(itemIn => itemIn.id === item.id);
           if (itemIn === undefined) {
             BUCKETPRODUCTS.push(new BucketProducts(item.id, item.title, item.descr, item.price, item.count, BUYPRODUCTS[i].count));
@@ -69,9 +66,8 @@ export class ProductService {
         }
       }
     }
+    this.BucketBehaviorSubject.next(BUCKETPRODUCTS);
   }
-
-
 
   removeBucketProduct(bucket: BucketProducts) {
     for (let i = 0; i < BUYPRODUCTS.length; i++) {
@@ -80,6 +76,7 @@ export class ProductService {
         BUCKETPRODUCTS.splice(i, 1);
       }
     }
+    this.BucketBehaviorSubject.next(BUCKETPRODUCTS);
   }
 
 
