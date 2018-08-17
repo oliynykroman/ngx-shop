@@ -19,16 +19,28 @@ export class BucketComponent implements OnInit {
   getAllBucketProducts(): void {
     this.BucketBehaviorSubject = this.productService.BucketBehaviorSubject.subscribe((data) => {
       this.totalProducts = data;
-      console.log(this.totalProducts);
-
+      this.priceCalc();
     });
   }
 
+  priceCalc():void{
+    for (let i = 0; i < this.totalProducts.length; i++) {
+      this.totalPrice = this.totalPrice + this.totalProducts[i].totalCount * this.totalProducts[i].price;
+    }
+  }
+
+  buyProduct(prodId, prodCount): void {
+    this.totalPrice = 0;
+    this.productService.setBuyProduct(prodId, prodCount);
+    this.productService.setBucketProduct();
+
+  }
 
 
-
-  removeBucketItem(item: BucketProducts): void {
+  removeBucketItem(item): void {
+    this.totalPrice = 0;
     this.productService.removeBucketProduct(item);
+    this.priceCalc();
   }
 
   goShopButton(): void {
@@ -38,6 +50,8 @@ export class BucketComponent implements OnInit {
 
   ngOnInit() {
     this.getAllBucketProducts();
+
+
   }
 
 }

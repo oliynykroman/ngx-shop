@@ -7,14 +7,15 @@
     <hr>
     <div class="set-total" *ngIf="productDet.count > 1">
       <label>Count:
-        <input type="number" min="1" max="{{productDet.count}}" placeholder="max:{{productDet.count}}"
+        <input type="number" min="1"  max="{{productDet.count}}" placeholder="max:{{productDet.count}}"
                [(ngModel)]="count">
       </label>
       <span class="totalPrice"><strong>Total price: </strong>{{productDet.price * count}}</span>
       <hr>
     </div>
-
     <button class="buy-product" (click)="buyProduct()">Buy this product</button>
     <button class="go-to-list" routerLink="">Back to shop</button>
+
   </div>
 </div>
+<div class="err" *ngIf="err">Your type incorrect value :: filed "count"</div>
